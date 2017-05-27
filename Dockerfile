@@ -7,7 +7,7 @@ MAINTAINER ZeroC0D3 Team <zeroc0d3.team@gmail.com>
 EXPOSE 8300 8301 8301/udp 8302 8302/udp 8400 8500 8501 8600 8600/udp
 
 #-----------------------------------------------------------------------------
-# Set Volume Consul
+# Set Volume Docker Consul
 #-----------------------------------------------------------------------------
 VOLUME ["/var/lib/consul"]
 
