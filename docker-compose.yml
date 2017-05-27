@@ -1,7 +1,7 @@
 version: '2'
 
 services:
-  base-workspace:
+  base-consul:
     build:
       context: .
     ports:
@@ -18,11 +18,11 @@ services:
       - /etc/localtime:/etc/localtime:ro
       #- /host/data:/var/consul                                           # volume for data
     environment:
-      - CONSUL_VERSION=0.8.3
-      - CONSULUI_VERSION=0.8.3
-      - CONSULTEMPLATE_VERSION=0.18.3
-      - RUBY_VERSION=2.4.1
-      - CONSUL_OPTIONS=-server -bootstrap-expect 1 -client 0.0.0.0 -ui    # minimal server options
+      - CONSUL_VERSION=${CONSUL_VERSION}
+      - CONSULUI_VERSION=${CONSULUI_VERSION}
+      - CONSULTEMPLATE_VERSION=${CONSULTEMPLATE_VERSION}
+      - RUBY_VERSION=${RUBY_VERSION}
+      - CONSUL_OPTIONS=${CONSUL_OPTIONS}                                  # minimal server options
       - CONSUL_DATACENTER=local                                           # datacenter
       - CONSUL_DOMAIN=test                                                # domain name
       - CONSUL_ENCRYPT=h2N6R1eyTysjBzzXxAWJvA==                           # encryption key
