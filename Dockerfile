@@ -22,6 +22,17 @@ VOLUME ["/var/lib/consul"]
 HEALTHCHECK CMD /etc/cont-consul/check || exit 1
 # HEALTHCHECK CMD [ $(curl -sI -w '%{http_code}' --out /dev/null http://localhost:8500/v1/agent/self) == "200" ] || exit 1
 
+#-----------------------------------------------------------------------------
+# Finalize (reconfigure)
+#-----------------------------------------------------------------------------
+COPY rootfs/ /
+
+#-----------------------------------------------------------------------------
+# Run Init Docker Container
+#-----------------------------------------------------------------------------
+ENTRYPOINT ["/init"]
+CMD []
+
 ## NOTE:
 ## *) Run vim then >> :PluginInstall
 ## *) Update plugin vim (vundle) >> :PluginUpdate
