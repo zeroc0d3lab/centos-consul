@@ -4,7 +4,7 @@ MAINTAINER ZeroC0D3 Team <zeroc0d3.team@gmail.com>
 #-----------------------------------------------------------------------------
 # Setup Locale UTF-8
 #-----------------------------------------------------------------------------
-RUN /usr/bin/localedef -i en_US -f UTF-8 en_US.UTF-8
+RUN localedef -i en_US -f UTF-8 en_US.UTF-8
 
 #-----------------------------------------------------------------------------
 # Set PORT Docker Container
