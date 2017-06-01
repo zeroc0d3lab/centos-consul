@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DOCKER_IMAGE="zeroc0d3lab/centos-base-consule"
+DOCKER_IMAGE="zeroc0d3lab/centos-base-consul"
 DOCKER_TAG="latest"
 
 #### Halt script on error

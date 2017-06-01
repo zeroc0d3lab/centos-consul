@@ -1,4 +1,4 @@
-IMAGE = zeroc0d3lab/centos-base-consule
+IMAGE = zeroc0d3lab/centos-base-consul
 
 clean-local:
 	docker rmi $(IMAGE):$(TAG) $(CLEAN_OPTIONS) || true
