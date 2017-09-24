@@ -5,7 +5,7 @@
 
 This docker image includes:
 
-## Features:
+## Features
 * bash (+ themes)
 * oh-my-zsh (+ themes)
 * tmux (+ themes)
@@ -27,12 +27,12 @@ This docker image includes:
   - [X] yeoman
 * composer
 
-## Plugins:
+## Plugins
 * Run vim then install plugin  
   ```
   :PluginInstall
   ```
-* Update plugin vim (vundle) 
+* Update plugin vim (vundle)
   ```
   :PluginUpdate
   ```
@@ -55,7 +55,7 @@ This docker image includes:
   ```
 * Running container only
   ```
-  docker-compose up 
+  docker-compose up
   ```
 
 ## License
