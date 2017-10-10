@@ -26,7 +26,7 @@ HEALTHCHECK CMD [ $(curl -sI -w '%{http_code}' --out /dev/null http://localhost:
 # Setup TrueColors (Terminal)
 #-----------------------------------------------------------------------------
 COPY ./rootfs/root/colors/24-bit-color.sh /root/colors/24-bit-color.sh
-RUN chmod +x /root/colors/24-bit-color.sh \
+RUN chmod a+x /root/colors/24-bit-color.sh \
     ./root/colors/24-bit-color.sh
 
 #-----------------------------------------------------------------------------
