@@ -1,26 +1,26 @@
-FROM zeroc0d3lab/centos-base-workspace:latest
+FROM zeroc0d3lab/centos-base:latest
 MAINTAINER ZeroC0D3 Team <zeroc0d3.team@gmail.com>
 
 #-----------------------------------------------------------------------------
-# Setup Locale UTF-8
+# Set Environment
 #-----------------------------------------------------------------------------
-RUN ["/usr/bin/localedef", "-i", "en_US", "-f", "UTF-8", "en_US.UTF-8"]
+ENV CONSULTEMPLATE_VERSION=0.19.0
 
 #-----------------------------------------------------------------------------
-# Set PORT Docker Container
+# Set Group & User for 'consul'
 #-----------------------------------------------------------------------------
-EXPOSE 8300 8301 8301/udp 8302 8302/udp 8400 8500 8501 8600 8600/udp
+RUN mkdir -p /var/lib/consul \
+    && groupadd consul \
+    && useradd -r -g consul consul \
+    && usermod -aG consul consul \
+    && chown -R consul:consul /var/lib/consul
 
 #-----------------------------------------------------------------------------
-# Set Volume Docker Consul
+# Install Consul Template Library
 #-----------------------------------------------------------------------------
-VOLUME ["/var/lib/consul"]
-
-#-----------------------------------------------------------------------------
-# Check Docker Container
-#-----------------------------------------------------------------------------
-# HEALTHCHECK CMD /etc/cont-consul/check || exit 1
-HEALTHCHECK CMD [ $(curl -sI -w '%{http_code}' --out /dev/null http://localhost:8500/v1/agent/self) == "200" ] || exit 1
+RUN curl -sSL https://releases.hashicorp.com/consul-template/${CONSULTEMPLATE_VERSION}/consul-template_${CONSULTEMPLATE_VERSION}_linux_amd64.zip -o /tmp/consul-template.zip \
+    && unzip /tmp/consul-template.zip -d /bin \
+    && rm -f /tmp/consul-template.zip
 
 #-----------------------------------------------------------------------------
 # Setup TrueColors (Terminal)
@@ -35,11 +35,7 @@ RUN chmod a+x /root/colors/24-bit-color.sh \
 COPY rootfs/ /
 
 #-----------------------------------------------------------------------------
-# Run Init Docker Container
+# Check Docker Container
 #-----------------------------------------------------------------------------
-ENTRYPOINT ["/init"]
-CMD []
-
-## NOTE:
-## *) Run vim then >> :PluginInstall
-## *) Update plugin vim (vundle) >> :PluginUpdate
+HEALTHCHECK CMD /etc/cont-consul/check || exit 1
+# HEALTHCHECK CMD [ $(curl -sI -w '%{http_code}' --out /dev/null http://localhost:8500/v1/agent/self) == "200" ] || exit 1
