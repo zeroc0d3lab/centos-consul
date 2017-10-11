@@ -1,5 +1,5 @@
-# CentOS Base Consul Docker (Base-Consul Container)
-[![Build Status](https://travis-ci.org/zeroc0d3lab/centos-base-consul.svg?branch=master)](https://travis-ci.org/zeroc0d3lab/centos-base-consul) [![](https://images.microbadger.com/badges/image/zeroc0d3lab/centos-base-consul.svg)](https://microbadger.com/images/zeroc0d3lab/centos-base-consul "Layers") [![](https://images.microbadger.com/badges/version/zeroc0d3lab/centos-base-consul.svg)](https://microbadger.com/images/zeroc0d3lab/centos-base-consul "Version") [![GitHub issues](https://img.shields.io/github/issues/zeroc0d3lab/centos-base-consul.svg)](https://github.com/zeroc0d3lab/centos-base-consul/issues) [![GitHub forks](https://img.shields.io/github/forks/zeroc0d3lab/centos-base-consul.svg)](https://github.com/zeroc0d3lab/centos-base-consul/network) [![GitHub stars](https://img.shields.io/github/stars/zeroc0d3lab/centos-base-consul.svg)](https://github.com/zeroc0d3lab/centos-base-consul/stargazers) [![GitHub license](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://raw.githubusercontent.com/zeroc0d3lab/centos-base-consul/master/LICENSE)
+# CentOS Consul Docker (Consul Container)
+[![Build Status](https://travis-ci.org/zeroc0d3lab/centos-consul.svg?branch=master)](https://travis-ci.org/zeroc0d3lab/centos-consul) [![](https://images.microbadger.com/badges/image/zeroc0d3lab/centos-consul.svg)](https://microbadger.com/images/zeroc0d3lab/centos-consul "Layers") [![](https://images.microbadger.com/badges/version/zeroc0d3lab/centos-consul.svg)](https://microbadger.com/images/zeroc0d3lab/centos-consul "Version") [![GitHub issues](https://img.shields.io/github/issues/zeroc0d3lab/centos-consul.svg)](https://github.com/zeroc0d3lab/centos-consul/issues) [![GitHub forks](https://img.shields.io/github/forks/zeroc0d3lab/centos-consul.svg)](https://github.com/zeroc0d3lab/centos-consul/network) [![GitHub stars](https://img.shields.io/github/stars/zeroc0d3lab/centos-consul.svg)](https://github.com/zeroc0d3lab/centos-consul/stargazers) [![GitHub license](https://img.shields.io/badge/license-GPLv2-blue.svg)](https://raw.githubusercontent.com/zeroc0d3lab/centos-consul/master/LICENSE)
 
 ## Docker Compose
 * Copy `.env.example` to `.env`
@@ -9,7 +9,7 @@
   ```
 * Force recreate container
   ```
-  docker-compose build && docker-compose up --force-recreate base-consul
+  docker-compose build && docker-compose up --force-recreate consul
   ```
 * Running container only
   ```
@@ -35,4 +35,4 @@ You can run docker-compose for different environment with selected containers
   ```
 
 ## License
-[**GNU General Public License v2**](https://github.com/zeroc0d3lab/centos-base-consul/blob/master/LICENSE)
+[**GNU General Public License v2**](https://github.com/zeroc0d3lab/centos-consul/blob/master/LICENSE)

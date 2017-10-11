@@ -20,6 +20,11 @@ BASE_CONSUL_PORT=1234
 CONSULTEMPLATE_VERSION=0.19.0
 
 # ==============================================
+#   CONSUL (Environments)
+# ==============================================
+CONSUL_VERSION=0.8.3
+
+# ==============================================
 #  OPTIONAL ARGUMENTS
 # ==============================================
 CONSUL_OPTIONS=-server -bootstrap-expect 1 -client 0.0.0.0 -ui    # minimal server options
