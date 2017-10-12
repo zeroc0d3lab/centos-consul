@@ -34,8 +34,8 @@ RUN curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${C
 # Setup TrueColors (Terminal)
 #-----------------------------------------------------------------------------
 COPY ./rootfs/root/colors/24-bit-color.sh /tmp/24-bit-color.sh
-RUN chmod a+x /tmp/24-bit-color.sh \
-&& ./tmp/24-bit-color.sh
+RUN chmod a+x /tmp/24-bit-color.sh; sync \
+    && ./tmp/24-bit-color.sh
 
 #-----------------------------------------------------------------------------
 # Set PORT Docker Container
