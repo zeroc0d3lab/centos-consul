@@ -31,6 +31,13 @@ RUN curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${C
     && rm -f /tmp/consul-template.zip
 
 #-----------------------------------------------------------------------------
+# Setup TrueColors (Terminal)
+#-----------------------------------------------------------------------------
+COPY ./rootfs/root/colors/24-bit-color.sh /tmp/24-bit-color.sh
+RUN chmod a+x /tmp/24-bit-color.sh \
+&& ./tmp/24-bit-color.sh
+
+#-----------------------------------------------------------------------------
 # Set PORT Docker Container
 #-----------------------------------------------------------------------------
 EXPOSE 8300 8301 8301/udp 8302 8302/udp 8400 8500 8501 8600 8600/udp
@@ -39,13 +46,6 @@ EXPOSE 8300 8301 8301/udp 8302 8302/udp 8400 8500 8501 8600 8600/udp
 # Set Volume Docker Consul
 #-----------------------------------------------------------------------------
 VOLUME ["/var/lib/consul"]
-
-#-----------------------------------------------------------------------------
-# Setup TrueColors (Terminal)
-#-----------------------------------------------------------------------------
-COPY ./rootfs/root/colors/24-bit-color.sh /root/colors/24-bit-color.sh
-RUN chmod a+x /root/colors/24-bit-color.sh \
-    ./root/colors/24-bit-color.sh
 
 #-----------------------------------------------------------------------------
 # Finalize (reconfigure)
