@@ -4,8 +4,8 @@ MAINTAINER ZeroC0D3 Team <zeroc0d3.team@gmail.com>
 #-----------------------------------------------------------------------------
 # Set Environment
 #-----------------------------------------------------------------------------
-ENV CONSUL_VERSION=0.8.3 \
-    CONSULTEMPLATE_VERSION=0.19.0
+ENV CONSUL_VERSION=1.0.0 \
+    CONSULTEMPLATE_VERSION=0.19.3
 
 #-----------------------------------------------------------------------------
 # Set Group & User for 'consul'
@@ -35,7 +35,7 @@ RUN curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${C
 #-----------------------------------------------------------------------------
 COPY ./rootfs/root/colors/24-bit-color.sh /opt/24-bit-color.sh
 RUN chmod a+x /opt/24-bit-color.sh; sync \
-    && ./opt/24-bit-color.sh
+    && sudo /bin/sh /opt/24-bit-color.sh
 
 #-----------------------------------------------------------------------------
 # Set PORT Docker Container
