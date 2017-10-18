@@ -17,18 +17,28 @@ RUN mkdir -p /var/lib/consul \
     && chown -R consul:consul /var/lib/consul
 
 #-----------------------------------------------------------------------------
+# Install Consul Template Library
+#-----------------------------------------------------------------------------
+RUN curl -sSL https://releases.hashicorp.com/consul-template/${CONSULTEMPLATE_VERSION}/consul-template_${CONSULTEMPLATE_VERSION}_linux_amd64.zip -o /opt/consul-template.zip \
+    && unzip /opt/consul-template.zip -d /bin
+
+#-----------------------------------------------------------------------------
 # Install Consul Library
 #-----------------------------------------------------------------------------
 RUN curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_linux_amd64.zip -o /opt/consul.zip \
-    && unzip /opt/consul.zip -d /bin \
-    && rm /opt/consul.zip \
-    && mkdir -p /var/lib/consului \
-    && curl -sSL https://releases.hashicorp.com/consul/${CONSUL_VERSION}/consul_${CONSUL_VERSION}_web_ui.zip -o /opt/consului.zip \
-    && unzip /opt/consului.zip -d /var/lib/consului \
-    && rm /opt/consului.zip \
-    && curl -sSL https://releases.hashicorp.com/consul-template/${CONSULTEMPLATE_VERSION}/consul-template_${CONSULTEMPLATE_VERSION}_linux_amd64.zip -o /opt/consul-template.zip \
-    && unzip /opt/consul-template.zip -d /bin \
-    && rm -f /opt/consul-template.zip
+    && unzip /opt/consul.zip -d /bin
+
+#-----------------------------------------------------------------------------
+# Install Consul UI Web
+#-----------------------------------------------------------------------------
+RUN mkdir -p /var/lib/consului \
+    && curl -sSL https://github.com/hashicorp/consul/archive/v${CONSUL_VERSION}.zip -o /opt/consului.zip \
+    && unzip /opt/consului.zip -d /var/lib/consului
+
+#-----------------------------------------------------------------------------
+# Cleanup File
+#-----------------------------------------------------------------------------
+RUN rm -f /opt/consul*.zip
 
 #-----------------------------------------------------------------------------
 # Setup TrueColors (Terminal)
