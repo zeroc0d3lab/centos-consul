@@ -63,12 +63,14 @@ VOLUME ["/var/lib/consul"]
 COPY rootfs/ /
 
 #-----------------------------------------------------------------------------
-# Cleanup 'root' folder
+# Cleanup 'root', 'opt' & 'tmp' folder
 #-----------------------------------------------------------------------------
 RUN rm -f /root/*.tar.gz \
     && rm -f /root/*.zip \
     && rm -f /opt/*.tar.gz \
-    && rm -f /opt/*.zip
+    && rm -f /opt/*.zip \
+    && rm -f /tmp/*.tar.gz \
+    && rm -f /tmp/*.zip 
 
 #-----------------------------------------------------------------------------
 # Run Init Docker Container
